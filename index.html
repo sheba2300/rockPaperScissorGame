@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+.options
+{
+  width:150px;
+  margin:50px;
+}
+.text
+{
+  font-size: 30px;
+  position: absolute;
+}
+#comText
+{
+  top:20%;
+  left:70%;
+}
+#userChoice
+{
+  position: absolute;
+  top:30%;
+  left:18%
+}
+#computerChoice
+{
+  position: absolute;
+  top:30%;
+  left:70%
+}
+#youText
+{
+  top:20%;
+  left:20%;
+}
+#choices
+{
+  position: absolute;
+  top: 65%;
+  left: 23%;
+}
+#title
+{
+  text-align: center;
+  font-size: 60px;
+  text-shadow: 2px 2px grey;
+}
+  </style>
+
+  <script>
+function initialize()
+{
+  choices = ["rock.png","paper.png","scissors.png"];
+  values = [0,1,2];
+  userPoints = 0;
+  computerPoints = 0;
+}
+function select(move)
+{
+  document.getElementById("userChoice").src = choices[move];
+  compChoice = Math.floor(Math.random()*3);
+  document.getElementById("computerChoice").src = choices[compChoice];
+  if(move - values[compChoice] == 1 ||  move - values[compChoice] == -2)
+  {
+  userPoints++;
+  }
+  else
+  {
+    if(move - values[compChoice] == 0){}
+    else {
+      {
+        computerPoints++;
+      }
+    }
+  }
+  if(userPoints > computerPoints)
+  {
+    document.getElementById("status").innerHTML = "You're Winning";
+
+
+  }
+  else {
+    if(userPoints < computerPoints)
+    {
+      document.getElementById("status").innerHTML = "You're Losing";
+    }
+    else {
+      document.getElementById("status").innerHTML = "It's a tie";
+
+
+    }
+  }
+  document.getElementById("userScore").innerHTML = userPoints;
+  document.getElementById("compScore").innerHTML = computerPoints;
+}
+
+  </script>
+</head>
+
+<body onload="initialize();">
+<div id = "title" >ROCK PAPER SCISSOR GAME</div>
+<span id = "youText" class = "text">Your Score: <span id = "userScore"> </span></span>
+<span id = "comText"class = "text">Computer Score: <span id = "compScore"> </span></span> </br>
+<div>
+<img class = "options" id = "userChoice" src = ""/>
+<img class = "options" id = "computerChoice"src = ""/>
+</div>
+<div style = "text-align: center;font-size:40px;" id = "status"></div>
+<div id = "choices">
+<div style = "left:40%; top:-10%;" class = "text">Make a Move</div>
+<img class = "options" onclick="select(0)"src = "rock.png"/>
+<img  class = "options" onclick="select(1)" src ="paper.png"/>
+<img  class = "options"  onclick="select(2)"src ="scissors.png"/>
+</div>
+</body>
+
+</html>
